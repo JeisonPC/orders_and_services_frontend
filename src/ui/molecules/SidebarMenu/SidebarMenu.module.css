@@ -1,0 +1,32 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  color: var(--gray-1);
+  font-weight: 500;
+  transition: background 180ms ease, color 180ms ease;
+  text-decoration: none;
+}
+
+.link:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.active {
+  background: rgba(31, 224, 194, 0.16);
+  color: #1fe0c2;
+}

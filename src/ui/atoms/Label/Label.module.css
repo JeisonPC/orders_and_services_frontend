@@ -1,0 +1,17 @@
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.required::after {
+  content: ' *';
+  color: #ef4444;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

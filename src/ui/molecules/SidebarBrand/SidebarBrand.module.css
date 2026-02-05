@@ -1,0 +1,25 @@
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tag {
+  align-self: flex-start;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  background: #137FEC;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: white;
+}
+
+.title {
+  font-size: 1.15rem;
+  color: black;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--gray-1);
+}

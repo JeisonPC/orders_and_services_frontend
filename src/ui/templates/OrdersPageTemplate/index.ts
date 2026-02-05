@@ -1,0 +1,1 @@
+export { OrdersPageTemplate } from './OrdersPageTemplate';

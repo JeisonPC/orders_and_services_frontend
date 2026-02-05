@@ -4,7 +4,8 @@ async function request<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
-  const url = `${BASE_URL}${endpoint}`;
+  // Si es una API Route de Next.js (empieza con /api/), no agregar BASE_URL
+  const url = endpoint.startsWith('/api/') ? endpoint : `${BASE_URL}${endpoint}`;
 
   const response = await fetch(url, {
     headers: {

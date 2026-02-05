@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query.provider";
+import { Sidebar } from "@/ui/organisms/sidebar/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,33 +30,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <QueryProvider>
           <div className="app-shell">
-            <aside className="sidebar">
-              <div className="sidebar__brand">
-                <span className="sidebar__tag">RoR</span>
-                <strong>Órdenes & Servicios</strong>
-                <p>Tablero operativo para monitorear clientes estratégicos.</p>
-              </div>
-
-              <div className="sidebar__section">
-                <ul className="sidebar__menu">
-                  {primaryLinks.map((link, index) => (
-                    <li key={link.href}>
-                      <a
-                        className={`sidebar__link${index === 0 ? " is-active" : ""}`}
-                        href={link.href}
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="sidebar__footer">
-                <p>¿Nuevo requerimiento?</p>
-                <button type="button">Crear orden</button>
-              </div>
-            </aside>
+            <Sidebar links={primaryLinks} />
 
             <div className="app-shell__content">
               <header className="app-shell__topbar">
