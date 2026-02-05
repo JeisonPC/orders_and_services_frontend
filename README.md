@@ -150,7 +150,7 @@ orders_and_services_frontend/
 │   └── shared/
 │       └── hooks/                    # Hooks compartidos
 │
-├── workspace.dsl                     # Structurizr C4 Model
+├── c4_front.png                      # Diagrama C4 de arquitectura
 ├── C4-ARCHITECTURE.md                # Documentación de diagramas
 └── README.md                         # Este archivo
 ```
@@ -258,27 +258,9 @@ yarn lint
 
 ## 📊 Diagramas C4
 
-El proyecto incluye documentación arquitectónica completa usando el modelo C4 con Structurizr DSL.
+El proyecto incluye documentación arquitectónica completa usando el modelo C4.
 
-### Ver diagramas
-
-**Opción 1: Imagen del diagrama**
-```bash
-# Ver el diagrama completo en c4_front.png
-open c4_front.png
-```
-
-**Opción 2: Docker (Recomendado)**
-```bash
-docker run -it --rm -p 8080:8080 -v $(pwd):/usr/local/structurizr structurizr/lite
-```
-Abrir [http://localhost:8080](http://localhost:8080)
-
-**Opción 3: VS Code Extension**
-```bash
-# Instalar extensión: Structurizr DSL
-# Abrir workspace.dsl y usar vista previa
-```
+![Diagrama C4 - Arquitectura del Sistema](./c4_front.png)
 
 ### Vistas disponibles
 
