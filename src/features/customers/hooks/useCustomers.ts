@@ -29,26 +29,3 @@ export const useCreateCustomer = () => {
     },
   });
 };
-
-export const useUpdateCustomer = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: ({ id, data }: { id: number; data: UpdateCustomerDTO }) =>
-      customersService.updateCustomer(id, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['customers'] });
-    },
-  });
-};
-
-export const useDeleteCustomer = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: (id: number) => customersService.deleteCustomer(id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['customers'] });
-    },
-  });
-};

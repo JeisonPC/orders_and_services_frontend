@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useOrders } from "@/features/orders/hooks/useOrders";
-import { useCustomerStore } from "@/features/customers/store/customerStore";
+import { useCustomerStore } from "@/store/customerStore";
 import { PageLayout } from "@/ui/organisms/PageLayout";
 import { Table } from "@/ui/organisms/Table";
 import { ordersTableColumns } from "@/features/orders/config/ordersTableColumns";
