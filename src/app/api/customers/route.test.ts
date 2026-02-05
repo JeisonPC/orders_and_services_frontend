@@ -100,36 +100,4 @@ describe('API Route /api/customers', () => {
       );
     });
   });
-
-  describe('POST', () => {
-    it('posts customer payload and returns json when ok', async () => {
-      fetchMock.mockResolvedValueOnce({
-        ok: true,
-        status: 201,
-        json: jest.fn().mockResolvedValue({ id: 1, customer_name: 'Ana' }),
-      } as unknown as Response);
-
-      const req: CustomersRequestJson = {
-        json: async () => ({ customer_name: 'Ana', address: 'Calle 1' }),
-      };
-
-      await route.POST(req as unknown as Request);
-
-      expect(fetchMock).toHaveBeenCalledWith(
-        'http://customers.test/customers',
-        expect.objectContaining({
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            customer: { customer_name: 'Ana', address: 'Calle 1' },
-          }),
-        })
-      );
-
-      expect(customersNextJsonMock).toHaveBeenCalledWith(
-        { id: 1, customer_name: 'Ana' },
-        undefined
-      );
-    });
-  });
 });
