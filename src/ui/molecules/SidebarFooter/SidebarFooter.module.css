@@ -1,35 +1,38 @@
 .footer {
   margin-top: auto;
-  padding: 1.2rem;
+  padding: 1rem;
   border: 1px solid var(--sidebar-border);
-  border-radius: 14px;
-  background: rgba(15, 22, 35, 0.8);
+  border-radius: 12px;
+  background: rgba(31, 224, 194, 0.04);
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.75rem;
 }
 
 .message {
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: var(--gray-1);
+  font-size: 0.875rem;
+  line-height: 1.4;
   margin: 0;
 }
 
 .button {
-  border: none;
+  border: 1px solid var(--sidebar-border);
   border-radius: 10px;
   padding: 0.65rem 1rem;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 0.875rem;
   cursor: pointer;
-  background: linear-gradient(120deg, #1fe0c2, #05a0e0);
-  color: #041c26;
-  transition: transform 0.2s ease;
+  background: white;
+  color: var(--gray-1);
+  transition: background 180ms ease, border-color 180ms ease;
 }
 
 .button:hover {
-  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .button:active {
-  transform: translateY(0);
+  background: rgba(0, 0, 0, 0.08);
 }

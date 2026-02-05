@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query.provider";
-import { Sidebar } from "@/ui/organisms/sidebar/sidebar";
+import { Sidebar } from "@/ui/organisms/Sidebar/Sidebar-full";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +19,10 @@ export const metadata: Metadata = {
   description: "Creada por Jeison Poveda",
 };
 
-const primaryLinks = [{ label: "Pedidos", href: "/" }];
+const primaryLinks = [
+  { label: "Pedidos", href: "/" },
+  { label: "Clientes", href: "/clients" },
+];
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,18 +36,6 @@ export default function RootLayout({
             <Sidebar links={primaryLinks} />
 
             <div className="app-shell__content">
-              <header className="app-shell__topbar">
-                <div>
-                  <p className="topbar__eyebrow">Panel operativo</p>
-                  <h1>Órdenes y servicios</h1>
-                </div>
-                <div className="topbar__actions">
-                  <button type="button">Buscar cliente</button>
-                  <button type="button" className="ghost">
-                    Filtros
-                  </button>
-                </div>
-              </header>
               <div className="content-scroll">{children}</div>
             </div>
           </div>

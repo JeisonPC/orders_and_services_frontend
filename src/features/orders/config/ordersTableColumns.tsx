@@ -22,7 +22,7 @@ export const formatDate = (dateString: string) => {
 export const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat('es-ES', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'COP',
   }).format(amount);
 };
 
@@ -47,9 +47,9 @@ export const ordersTableColumns = [
     ),
   },
   {
-    key: 'total',
+    key: 'price',
     label: 'Total',
-    render: (order: Order) => formatCurrency(order.total),
+    render: (order: Order) => formatCurrency(Number(order.price) || 0),
   },
   {
     key: 'created_at',

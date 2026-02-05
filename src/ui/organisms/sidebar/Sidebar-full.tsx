@@ -26,8 +26,8 @@ export const Sidebar = ({ links, activeHref, onCreateOrder }: SidebarProps) => {
       <SidebarMenu links={links} activeHref={activeHref} />
 
       <SidebarFooter
-        message="¿Nuevo requerimiento?"
-        buttonText="Crear orden"
+        message="¿Aún no eres cliente?"
+        buttonText="Registrarme"
         onButtonClick={onCreateOrder}
       />
     </aside>

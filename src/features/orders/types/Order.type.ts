@@ -2,7 +2,7 @@ export interface Order {
   id: number;
   customer_id: number;
   status: string;
-  total: number;
+  price: number;
   created_at: string;
   updated_at: string;
 }

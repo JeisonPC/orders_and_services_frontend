@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useCreateOrder } from "@/features/orders/hooks/useOrders";
+import { useCustomers } from "@/features/customers/hooks/useCustomers";
 import { Button } from "@/ui/atoms/Button/Button";
 import { Label } from "@/ui/atoms/Label";
 import { Field } from "@/ui/molecules/Field";
@@ -10,6 +11,7 @@ import { Modal } from "@/ui/organisms/Modal";
 export function OrdersPageActions() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const createOrder = useCreateOrder();
+  const { data: customers, isLoading: isLoadingCustomers } = useCustomers();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,13 +48,27 @@ export function OrdersPageActions() {
       >
         <form onSubmit={handleSubmit}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <Field
-              label="ID Cliente"
-              type="number"
-              name="customer_id"
-              defaultValue={1}
-              required
-            />
+            <div>
+              <Label htmlFor="customer_id" required>
+                Cliente
+              </Label>
+              <select
+                id="customer_id"
+                name="customer_id"
+                required
+                disabled={isLoadingCustomers}
+                style={{ width: '100%', padding: '0.5rem', borderRadius: '0.375rem', border: '1px solid #d1d5db' }}
+              >
+                <option value="">
+                  {isLoadingCustomers ? 'Cargando clientes...' : 'Selecciona un cliente'}
+                </option>
+                {customers?.map((customer) => (
+                  <option key={customer.id} value={customer.id}>
+                    {customer.customer_name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <Field
               label="Nombre del producto"

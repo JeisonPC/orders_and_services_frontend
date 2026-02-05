@@ -1,0 +1,23 @@
+.navbar {
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid var(--sidebar-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 1.5rem;
+  }
+}

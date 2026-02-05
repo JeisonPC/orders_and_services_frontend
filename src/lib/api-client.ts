@@ -6,6 +6,9 @@ async function request<T>(
 ): Promise<T> {
   // Si es una API Route de Next.js (empieza con /api/), no agregar BASE_URL
   const url = endpoint.startsWith('/api/') ? endpoint : `${BASE_URL}${endpoint}`;
+  
+  console.log('apiClient - endpoint:', endpoint);
+  console.log('apiClient - final URL:', url);
 
   const response = await fetch(url, {
     headers: {
