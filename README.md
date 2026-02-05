@@ -1,7 +1,5 @@
 # Orders and Services Frontend 🚀
 
-> Prueba técnica FullStack Developer - Monokera
-
 Sistema de gestión de pedidos y clientes construido con **Next.js 16**, **React 19** y **TypeScript**, implementando arquitectura limpia, Atomic Design y patrones modernos de desarrollo frontend.
 
 ## 📋 Tabla de Contenidos
@@ -260,7 +258,7 @@ yarn lint
 
 El proyecto incluye documentación arquitectónica completa usando el modelo C4.
 
-![Diagrama C4 - Arquitectura del Sistema](./c4_front.png)
+![Diagrama C4 - Arquitectura del Sistema](./public/c4_front.png)
 
 ### Vistas disponibles
 
@@ -273,8 +271,6 @@ El proyecto incluye documentación arquitectónica completa usando el modelo C4.
 7. **BFFLayer** - Patrón Backend for Frontend
 8. **Deployment** - Diagrama de despliegue
 
-Ver [C4-ARCHITECTURE.md](./C4-ARCHITECTURE.md) para más detalles.
-
 ## ✅ Características Implementadas
 
 ### Pedidos (Orders)
@@ -284,8 +280,6 @@ Ver [C4-ARCHITECTURE.md](./C4-ARCHITECTURE.md) para más detalles.
 - [x] Crear pedido (modal)
 - [x] Título dinámico: "Pedidos de {nombre_cliente}"
 - [x] Caché inteligente por cliente/página/perPage
-- [ ] Editar pedido (backend implementado, UI pendiente)
-- [ ] Eliminar pedido (backend implementado, UI pendiente)
 
 ### Clientes (Customers)
 - [x] Listado de clientes
@@ -293,9 +287,6 @@ Ver [C4-ARCHITECTURE.md](./C4-ARCHITECTURE.md) para más detalles.
 - [x] Auto-selección del primer cliente
 - [x] Store global con Zustand
 - [x] Integración con orders (filtrado)
-- [ ] Crear cliente (backend implementado, UI pendiente)
-- [ ] Editar cliente (backend implementado, UI pendiente)
-- [ ] Eliminar cliente (backend implementado, UI pendiente)
 
 ### UI/UX
 - [x] Atomic Design completo
@@ -350,15 +341,5 @@ yarn test:e2e
 # Coverage
 yarn test:coverage
 ```
-
-## 🤝 Contribución
-
-Este proyecto fue desarrollado como prueba técnica para **Monokera**.
-
-## 📄 Licencia
-
-Private - Monokera Technical Test
-
----
 
 **Desarrollado con ❤️ usando Next.js 16 y React 19**
