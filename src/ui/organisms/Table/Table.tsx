@@ -15,9 +15,16 @@ export interface TableProps<T> {
   onEdit?: (item: T) => void;
   onDelete?: (item: T) => void;
   getRowKey: (item: T) => string | number;
+  pagination?: {
+    currentPage: number;
+    totalPages: number;
+    perPage: number;
+    onPageChange: (page: number) => void;
+    onPerPageChange: (perPage: number) => void;
+  };
 }
 
-export const Table = <T,>({ 
+export function Table<T = Record<string, unknown>>({ 
   data,
   columns,
   isLoading = false,
@@ -25,7 +32,8 @@ export const Table = <T,>({
   onEdit, 
   onDelete,
   getRowKey,
-}: TableProps<T>) => {
+  pagination,
+}: TableProps<T>) {
   if (isLoading) {
     return (
       <TableSkeleton 
@@ -46,52 +54,121 @@ export const Table = <T,>({
 
   const showActions = onEdit || onDelete;
 
-  return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <th key={column.key}>{column.label}</th>
-          ))}
-          {showActions && <th>Acciones</th>}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr key={getRowKey(item)}>
-            {columns.map((column) => (
-              <td key={column.key}>
-                {column.render 
-                  ? column.render(item) 
-                  : String((item as Record<string, unknown>)[column.key] ?? '')
-                }
-              </td>
+  const renderPagination = () => {
+    if (!pagination) return null;
+
+    const { currentPage, totalPages, perPage, onPageChange, onPerPageChange } = pagination;
+    const pages = [];
+    
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+
+    return (
+      <div className={styles.pagination}>
+        <div className={styles.paginationLeft}>
+          <span className={styles.paginationLabel}>Mostrar</span>
+          <select
+            className={styles.paginationSelect}
+            value={perPage}
+            onChange={(e) => onPerPageChange(Number(e.target.value))}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={30}>30</option>
+            <option value={40}>40</option>
+          </select>
+          <span className={styles.paginationLabel}>por página</span>
+        </div>
+
+        <div className={styles.paginationCenter}>
+          <button
+            className={styles.paginationButton}
+            onClick={() => onPageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            ← Anterior
+          </button>
+          
+          <div className={styles.paginationPages}>
+            {pages.map((page) => (
+              <button
+                key={page}
+                className={`${styles.paginationButton} ${
+                  page === currentPage ? styles.paginationButtonActive : ''
+                }`}
+                onClick={() => onPageChange(page)}
+              >
+                {page}
+              </button>
             ))}
-            {showActions && (
-              <td>
-                <div className={styles.actions}>
-                  {onEdit && (
-                    <button 
-                      className={styles.actionButton}
-                      onClick={() => onEdit(item)}
-                    >
-                      Editar
-                    </button>
-                  )}
-                  {onDelete && (
-                    <button 
-                      className={styles.actionButton}
-                      onClick={() => onDelete(item)}
-                    >
-                      Eliminar
-                    </button>
-                  )}
-                </div>
-              </td>
-            )}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          </div>
+
+          <button
+            className={styles.paginationButton}
+            onClick={() => onPageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Siguiente →
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className={styles.tableContainer}>
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {columns.map((column) => (
+                <th key={column.key}>{column.label}</th>
+              ))}
+              {showActions && <th>Acciones</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item) => (
+              <tr key={getRowKey(item)}>
+                {columns.map((column) => (
+                  <td key={column.key}>
+                    {column.render 
+                      ? column.render(item) 
+                      : String((item as Record<string, unknown>)[column.key] ?? '')
+                    }
+                  </td>
+                ))}
+                {showActions && (
+                  <td>
+                    <div className={styles.actions}>
+                      {onEdit && (
+                        <button 
+                          className={styles.actionButton}
+                          onClick={() => onEdit(item)}
+                        >
+                          Editar
+                        </button>
+                      )}
+                      {onDelete && (
+                        <button 
+                          className={styles.actionButton}
+                          onClick={() => onDelete(item)}
+                        >
+                          Eliminar
+                        </button>
+                      )}
+                    </div>
+                  </td>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {renderPagination()}
+    </div>
   );
-};
+}
+

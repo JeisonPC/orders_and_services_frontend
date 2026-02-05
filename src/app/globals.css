@@ -38,8 +38,17 @@ a {
 }
 
 .app-shell {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
+  overflow: hidden;
+}
+
+.app-shell__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .app-shell__content {
@@ -48,6 +57,13 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow: hidden;
+}
+
+.content-scroll {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
 }
 
 .app-shell__topbar {

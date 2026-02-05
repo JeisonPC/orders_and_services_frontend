@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query.provider";
 import { Sidebar } from "@/ui/organisms/Sidebar/Sidebar-full";
+import { Navbar } from "@/ui/organisms/Navbar/Navbar";
+import { CustomerSelector } from "@/features/customers/components/CustomerSelector";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,8 +37,13 @@ export default function RootLayout({
           <div className="app-shell">
             <Sidebar links={primaryLinks} />
 
-            <div className="app-shell__content">
-              <div className="content-scroll">{children}</div>
+            <div className="app-shell__main">
+              <Navbar brand={{ title: "Orders & Services", href: "/" }}>
+                <CustomerSelector />
+              </Navbar>
+              <div className="app-shell__content">
+                <div className="content-scroll">{children}</div>
+              </div>
             </div>
           </div>
         </QueryProvider>

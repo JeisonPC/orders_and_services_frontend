@@ -1,7 +1,7 @@
 import { SidebarBrand } from "@/ui/molecules/SidebarBrand/SidebarBrand";
 import { SidebarMenu } from "@/ui/molecules/SidebarMenu/SidebarMenu";
 import { SidebarFooter } from "@/ui/molecules/SidebarFooter/SidebarFooter";
-import styles from './sidebar.module.css';
+import styles from './Sidebar.module.css';
 
 interface SidebarLink {
   label: string;

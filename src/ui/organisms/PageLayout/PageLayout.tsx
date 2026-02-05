@@ -1,17 +1,17 @@
 import { ReactNode } from 'react';
-import styles from './OrdersPageTemplate.module.css';
+import styles from './PageLayout.module.css';
 
-interface OrdersPageTemplateProps {
+interface PageLayoutProps {
   title?: string;
   actions?: ReactNode;
   children: ReactNode;
 }
 
-export const OrdersPageTemplate = ({ 
+export const PageLayout = ({ 
   title = 'Pedidos',
   actions,
   children 
-}: OrdersPageTemplateProps) => {
+}: PageLayoutProps) => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>

@@ -1,9 +1,9 @@
 import { apiClient } from "@/lib/api-client";
-import { Order, CreateOrderDTO } from "../types/Order.type";
+import { Order, CreateOrderDTO, OrdersResponse } from "../types/Order.type";
 
 export const ordersService = {
-  getOrders: async (customerId: number) => {
-    return apiClient.get<Order[]>("/api/orders", { customer_id: customerId });
+  getOrders: async (customerId: number, page: number = 1, perPage: number = 10) => {
+    return apiClient.get<OrdersResponse>("/api/orders", { customer_id: customerId, page, per_page: perPage });
   },
 
   getOrderById: async (orderId: number) => {
