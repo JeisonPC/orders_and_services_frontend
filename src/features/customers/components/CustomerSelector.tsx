@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useCustomers } from "@/features/customers/hooks/useCustomers";
-import { useCustomerStore } from "@/features/customers/store/customerStore";
+import { useCustomerStore } from "@/store/customerStore";
 import styles from "./CustomerSelector.module.css";
 
 export const CustomerSelector = () => {
