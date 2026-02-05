@@ -6,6 +6,8 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const customerId = searchParams.get('customer_id');
+    const page = searchParams.get('page') || '1';
+    const perPage = searchParams.get('per_page') || '10';
 
     if (!customerId) {
       return NextResponse.json(
@@ -14,7 +16,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const res = await fetch(`${API_URL}/orders?customer_id=${customerId}`, {
+    const res = await fetch(`${API_URL}/orders?customer_id=${customerId}&page=${page}&per_page=${perPage}`, {
       headers: {
         'Accept': '*/*',
       },
@@ -28,8 +30,10 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const data = await res.json();
-    return NextResponse.json(data);
+    const responseData = await res.json();
+    // El backend devuelve { data: [], pagination: {} }
+    // Devolvemos todo el objeto con paginación
+    return NextResponse.json(responseData);
   } catch (error) {
     console.error('Error fetching orders:', error);
     return NextResponse.json(

@@ -14,3 +14,12 @@ export interface CreateOrderDTO {
   price: number;
   status: string;
 }
+export interface OrdersResponse {
+  data: Order[];
+  pagination: {
+    current_page: number;
+    per_page: number;
+    total_items: number;
+    total_pages: number;
+  };
+}

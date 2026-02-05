@@ -1,0 +1,1 @@
+export { CustomersPageWithData } from './CustomersPageWithData';

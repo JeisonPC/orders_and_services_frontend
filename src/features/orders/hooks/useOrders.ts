@@ -3,10 +3,10 @@ import { Order, CreateOrderDTO } from '../types/Order.type';
 import getOrdersUseCase from '../useCases/getOrders.useCase';
 import { ordersService } from '../services/orders.service';
 
-export const useOrders = (customerId: number) => {
+export const useOrders = (customerId: number, page: number = 1, perPage: number = 10) => {
   return useQuery({
-    queryKey: ['orders', customerId],
-    queryFn: () => getOrdersUseCase(customerId),
+    queryKey: ['orders', customerId, page, perPage],
+    queryFn: () => getOrdersUseCase(customerId, page, perPage),
     enabled: !!customerId,
   });
 };
