@@ -262,13 +262,19 @@ El proyecto incluye documentación arquitectónica completa usando el modelo C4 
 
 ### Ver diagramas
 
-**Opción 1: Docker (Recomendado)**
+**Opción 1: Imagen del diagrama**
+```bash
+# Ver el diagrama completo en c4_front.png
+open c4_front.png
+```
+
+**Opción 2: Docker (Recomendado)**
 ```bash
 docker run -it --rm -p 8080:8080 -v $(pwd):/usr/local/structurizr structurizr/lite
 ```
 Abrir [http://localhost:8080](http://localhost:8080)
 
-**Opción 2: VS Code Extension**
+**Opción 3: VS Code Extension**
 ```bash
 # Instalar extensión: Structurizr DSL
 # Abrir workspace.dsl y usar vista previa
